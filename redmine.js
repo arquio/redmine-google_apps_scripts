@@ -289,6 +289,15 @@ var Redmine = (function() {
     return data;
   };
 
+  Redmine.prototype.getProjectWithTrackers = function (project_id) {
+    Logger.log("Launching getProject(" + project_id + ")");
+    
+    var url = REDMINE_URL + '/projects/' + project_id + '.xml?include=trackers';
+    var data = this.getDataElement(url, 'project');
+    
+    return data;
+  };
+  
   Redmine.prototype.getTimeEntries = function (project_id) {
     Logger.log("Launching getTimeEntries(" + project_id + ")");
     
